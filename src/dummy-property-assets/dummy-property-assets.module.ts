@@ -6,11 +6,16 @@ import {
   DummuPropertySchema,
   DummyProperty,
 } from '../schemas/dummy-property.schema';
+import {
+  FileDocument,
+  FileSchema
+} from '../schemas/file.schema';
 
 @Module({
   imports: [
     MongooseModule.forFeature([
       { name: DummyProperty.name, schema: DummuPropertySchema },
+      { name: FileDocument.name, schema: FileSchema}
     ]),
   ],
   controllers: [DummyPropertyAssetsController],

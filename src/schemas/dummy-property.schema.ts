@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { HydratedDocument } from 'mongoose';
+import { HydratedDocument, Types } from 'mongoose';
 
 export type DummyPropertyDocument = HydratedDocument<DummyProperty>;
 @Schema()
@@ -16,5 +16,7 @@ export class DummyProperty {
   sharesAvailable: number;
   @Prop({ required: true })
   sharePriceTON: number;
+  @Prop([{ type: Types.ObjectId, ref: 'File' }])
+  files: Types.ObjectId[];
 }
 export const DummuPropertySchema = SchemaFactory.createForClass(DummyProperty);
